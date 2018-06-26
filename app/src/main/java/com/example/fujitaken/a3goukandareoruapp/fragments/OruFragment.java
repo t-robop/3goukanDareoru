@@ -9,21 +9,24 @@ import android.view.ViewGroup;
 
 import com.example.fujitaken.a3goukandareoruapp.R;
 
-public class StateFragment extends Fragment {
+public class OruFragment extends Fragment {
 
-    public static StateFragment newInstance() {
-        return new StateFragment();
+    //インスタンスを生成するメソッド
+    public static OruFragment newInstance() {
+        return new OruFragment();
     }
 
-    @Override
+    @Override   //Viewを作るメソッド
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_state, container, false);
+        return inflater.inflate(R.layout.fragment_oru, container, false);  //inflateでfragmentのxmlを指定してviewを作る
     }
 
-    @Override
+    @Override   //Viewが作られたあとに呼ばれるメソッド (ここに主な処理を書く)
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        //TODO ListView
 
     }
 }
