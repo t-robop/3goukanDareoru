@@ -1,61 +1,59 @@
 package com.example.fujitaken.a3goukandareoruapp;
 
-import android.content.Context;
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.CoordinatorLayout;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.AttributeSet;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.FrameLayout;
+
+import com.example.fujitaken.a3goukandareoruapp.fragments.LogFragment;
+import com.example.fujitaken.a3goukandareoruapp.fragments.MainFragment;
+import com.example.fujitaken.a3goukandareoruapp.fragments.StateFragment;
 
 public class MainActivity extends AppCompatActivity {
-
-    public int aa = 0;
-    BottomNavigationView dnv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        dnv=findViewById(R.id.navigation);
+        //何も画面が生成されていないとき
+        if (savedInstanceState == null){
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();   //fragmentを作り始めるよ
 
-        dnv.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            //MainFragment.javaのnewInstanceメソッドを呼んで画面を生成(厳密にはreplaceなので置き換え)
+            fragmentTransaction.replace(R.id.container, MainFragment.newInstance());    //containerはactivity_root.xmlに記述してある
+
+            fragmentTransaction.commit();   //fragment追加処理を終了
+        }
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);   //xmlのbottomNavigationViewとの連携
+
+        //Listener(入力があったら呼ばれるもの)の設定
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.item1:
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {   //引数itemにbottom_navigation_menuで選択されたものが入る
+                switch (item.getItemId()){  //switch文で処理分岐 それぞれreplaceでfragmentを置き換え
+                    case R.id.menu_log:
+                        LogFragment logFragment = LogFragment.newInstance();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.container, logFragment).commit();
+                        break;
 
-                        return true;
-                    case R.id.item2:
+                    case R.id.menu_main:
+                        MainFragment mainFragment = MainFragment.newInstance();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.container, mainFragment).commit();
+                        break;
 
-                        return true;
-                    case R.id.item3:
-
-                        return true;
+                    case R.id.menu_state:
+                        StateFragment stateFragment = StateFragment.newInstance();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.container, stateFragment).commit();
+                        break;
                 }
+
                 return false;
             }
         });
 
-    }
-
-
-    public class BisonBehavior extends CoordinatorLayout.Behavior<BottomNavigationView> {
-
-        public BisonBehavior(Context context, AttributeSet attrs) {
-            super(context, attrs);
-        }
-
-        @Override
-        public boolean layoutDependsOn(CoordinatorLayout parrent, BottomNavigationView child, View dependency) {
-            return dependency instanceof FrameLayout;
-
-
-        }
     }
 }

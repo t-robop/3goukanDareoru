@@ -6,14 +6,31 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import com.example.fujitaken.a3goukandareoruapp.R;
 
+import java.util.ArrayList;
+
 public class MainFragment extends Fragment {
+
+    ArrayList<String>arrayList = new ArrayList<>();
+    String test = "";
+
+    ListView listView;
+    ArrayAdapter<String> arrayAdapter;
 
     //インスタンスを生成するメソッド
     public static MainFragment newInstance() {
         return new MainFragment();
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
+
+        arrayList.add(test);
     }
 
     @Override   //Viewを作るメソッド
@@ -26,6 +43,10 @@ public class MainFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        listView = view.findViewById(R.id.list);
 
+        arrayAdapter=new ArrayAdapter<>(getActivity().getApplicationContext(), android.R.layout.simple_list_item_1, arrayList);
+
+        listView.setAdapter(arrayAdapter);
     }
 }
