@@ -4,23 +4,26 @@
     <item
         android:id="@+id/menu_log"
         android:icon="@drawable/ic_launcher_foreground"
-        android:title="Log"
+        android:title="ろぐ"
         android:enabled="true"
         app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/menu_main"
         android:icon="@drawable/ic_launcher_foreground"
-        android:title="main"
+        android:title="おる"
         android:enabled="true"
         app:showAsAction="ifRoom"/>
 
     <item
         android:id="@+id/menu_state"
         android:icon="@drawable/ic_launcher_foreground"
-        android:title="status"
+        android:title="おらん"
         android:enabled="true"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="ifRoom"
+
+       />
 
 
+       />
 </menu>

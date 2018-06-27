@@ -45,7 +45,7 @@ public class LogFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        listView = view.findViewById(R.id.list);
+        listView = view.findViewById(R.id.listlog);
 
         listAdapter = new ListAdapter(getContext());
         listAdapter.setMemberList(arrayList);

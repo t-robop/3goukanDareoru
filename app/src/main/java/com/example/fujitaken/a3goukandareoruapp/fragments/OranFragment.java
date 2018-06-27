@@ -13,7 +13,7 @@ import com.example.fujitaken.a3goukandareoruapp.R;
 
 import java.util.ArrayList;
 
-public class StateFragment extends Fragment {
+public class OranFragment extends Fragment {
 
     ArrayList<String>arrayList = new ArrayList<>();
     String test = "";
@@ -21,8 +21,8 @@ public class StateFragment extends Fragment {
     ListView listView;
     ArrayAdapter<String> arrayAdapter;
 
-    public static StateFragment newInstance() {
-        return new StateFragment();
+    public static OranFragment newInstance() {
+        return new OranFragment();
     }
 
     @Override
@@ -35,14 +35,14 @@ public class StateFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_state, container, false);
+        return inflater.inflate(R.layout.fragment_oran, container, false);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        listView = view.findViewById(R.id.list);
+        listView = view.findViewById(R.id.listoran);
 
         arrayAdapter=new ArrayAdapter<>(getActivity().getApplicationContext(), android.R.layout.simple_list_item_1, arrayList);
 

@@ -13,7 +13,7 @@ import com.example.fujitaken.a3goukandareoruapp.R;
 
 import java.util.ArrayList;
 
-public class MainFragment extends Fragment {
+public class OruFragment extends Fragment {
 
     ArrayList<String>arrayList = new ArrayList<>();
     String test = "";
@@ -22,8 +22,8 @@ public class MainFragment extends Fragment {
     ArrayAdapter<String> arrayAdapter;
 
     //インスタンスを生成するメソッド
-    public static MainFragment newInstance() {
-        return new MainFragment();
+    public static OruFragment newInstance() {
+        return new OruFragment();
     }
 
     @Override
@@ -36,14 +36,14 @@ public class MainFragment extends Fragment {
     @Override   //Viewを作るメソッド
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_main, container, false);  //inflateでfragmentのxmlを指定してviewを作る
+        return inflater.inflate(R.layout.fragment_oru, container, false);  //inflateでfragmentのxmlを指定してviewを作る
     }
 
     @Override   //Viewが作られたあとに呼ばれるメソッド (ここに主な処理を書く)
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        listView = view.findViewById(R.id.list);
+        listView = view.findViewById(R.id.listoru);
 
         arrayAdapter=new ArrayAdapter<>(getActivity().getApplicationContext(), android.R.layout.simple_list_item_1, arrayList);
 

@@ -8,8 +8,10 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.fujitaken.a3goukandareoruapp.fragments.LogFragment;
-import com.example.fujitaken.a3goukandareoruapp.fragments.MainFragment;
-import com.example.fujitaken.a3goukandareoruapp.fragments.StateFragment;
+import com.example.fujitaken.a3goukandareoruapp.fragments.OruFragment;
+import com.example.fujitaken.a3goukandareoruapp.fragments.OranFragment;
+import com.example.fujitaken.a3goukandareoruapp.fragments.OruFragment;
+import com.example.fujitaken.a3goukandareoruapp.fragments.OranFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();   //fragmentを作り始めるよ
 
             //MainFragment.javaのnewInstanceメソッドを呼んで画面を生成(厳密にはreplaceなので置き換え)
-            fragmentTransaction.replace(R.id.container, MainFragment.newInstance());    //containerはactivity_root.xmlに記述してある
+            fragmentTransaction.replace(R.id.container, OruFragment.newInstance());    //containerはactivity_root.xmlに記述してある
 
             fragmentTransaction.commit();   //fragment追加処理を終了
         }
@@ -41,12 +43,12 @@ public class MainActivity extends AppCompatActivity {
                         break;
 
                     case R.id.menu_main:
-                        MainFragment mainFragment = MainFragment.newInstance();
+                        OruFragment mainFragment = OruFragment.newInstance();
                         getSupportFragmentManager().beginTransaction().replace(R.id.container, mainFragment).commit();
                         break;
 
                     case R.id.menu_state:
-                        StateFragment stateFragment = StateFragment.newInstance();
+                        OranFragment stateFragment = OranFragment.newInstance();
                         getSupportFragmentManager().beginTransaction().replace(R.id.container, stateFragment).commit();
                         break;
                 }
